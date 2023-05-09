@@ -6,11 +6,13 @@
 ----
 #### 최신 작업 현황(lastest working)
 * [CTC Net 연습(CTC Net Practice) - Colab](https://colab.research.google.com/drive/1T7oo-t97kyv1gSPZcYg6khkeOjK1t_vy?usp=sharing)
+* Blank 수렴 문제 해결 결과는 'CTC_pytorch_SR_ipynb.ipynb' 파일 대신 'CTC_pytorch_SR2_.ipynb'의 마지막 코드 블럭의 끝부분 출력 결과 참고
 ----
 
 ### 주요 할일
 ----
-* [ ] Blank Tag label로 무조건 수렴하는 문제 해결
+* [x] Blank Tag label로 무조건 수렴하는 문제 해결
+* [ ] RNN-T 디코딩시 Blank Tag label로 무조건 수렴하는 문제 해결
 * [ ] RNN-T 구현
 * [ ] RNN-T Online Decoding 구현
 * [ ] 한국어 데이터 추가 및 교체후 학습
@@ -20,15 +22,15 @@
 ---
 
 1. 논문(Paper)
-  * [CTC(Connectionist Temporal Classification)](https://www.cs.toronto.edu/~graves/icml_2006.pdf])
-  * [Beam Search Decoding](https://aclanthology.org/W17-3207.pdf)
-  * [RNN-T](https://arxiv.org/pdf/1211.3711.pdf)
+     * [CTC(Connectionist Temporal Classification)](https://www.cs.toronto.edu/~graves/icml_2006.pdf])
+     * [Beam Search Decoding](https://aclanthology.org/W17-3207.pdf)
+     * [RNN-T](https://arxiv.org/pdf/1211.3711.pdf)
 
 2. 관련링크(Related links)
-  * https://ratsgo.github.io/speechbook/docs/neuralam/ctc
-  * [Beam Search Decoding](https://amber-chaeeunk.tistory.com/94)
-  * [Beam Search for Rnn-t ASR](https://www.youtube.com/watch?v=Siuqi7e9IwU)
-  * [Greedy Decoding for RNN-T ASR](https://www.youtube.com/watch?v=dgsDIuJLoJU)
+     * https://ratsgo.github.io/speechbook/docs/neuralam/ctc
+     * [Beam Search Decoding](https://amber-chaeeunk.tistory.com/94)
+     * [Beam Search for Rnn-t ASR](https://www.youtube.com/watch?v=Siuqi7e9IwU)
+     * [Greedy Decoding for RNN-T ASR](https://www.youtube.com/watch?v=dgsDIuJLoJU)
 
 # 평가 기법
 

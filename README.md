@@ -8,7 +8,13 @@
 * [CTC Net 연습(CTC Net Practice) - Colab](https://colab.research.google.com/drive/1T7oo-t97kyv1gSPZcYg6khkeOjK1t_vy?usp=sharing)
 ----
 
+### 주요 할일
 ----
+* [ ] Blank Tag label로 무조건 수렴하는 문제 해결
+* [ ] RNN-T 구현
+* [ ] RNN-T Online Decoding 구현
+* [ ] 한국어 데이터 추가 및 교체후 학습
+
 ## RNNT를 구현 및 이용하기 위한 사전지식(Pre-knowledge to implement or use RNNT Net)
 
 ---

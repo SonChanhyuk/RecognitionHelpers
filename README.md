@@ -5,15 +5,14 @@
 
 ----
 #### 최신 작업 현황(lastest working)
-* [CTC Net 연습(CTC Net Practice) - Colab](https://colab.research.google.com/drive/1T7oo-t97kyv1gSPZcYg6khkeOjK1t_vy?usp=sharing)
-* Blank 수렴 문제 해결 결과는 'CTC_pytorch_SR_ipynb.ipynb' 파일 대신 'CTC_pytorch_SR2_.ipynb'의 마지막 코드 블럭의 끝부분 출력 결과 참고
+* See file '[RNNT_Speech_Recognition.ipynb](RNNT_Speech_Recognition.ipynb)' 참고
 ----
 
 ### 주요 할일
 ----
 * [x] Blank Tag label로 무조건 수렴하는 문제 해결
-* [ ] RNN-T 디코딩시 Blank Tag label로 무조건 수렴하는 문제 해결
-* [ ] RNN-T 구현
+* [x] RNN-T 디코딩시 Blank Tag label로 무조건 수렴하는 문제 해결
+* [x] RNN-T 구현(API로)
 * [ ] RNN-T Online Decoding 구현
 * [ ] 한국어 데이터 추가 및 교체후 학습
 

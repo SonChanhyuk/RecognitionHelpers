@@ -5,7 +5,14 @@
 
 ----
 #### 최신 작업 현황(lastest working)
-* See file '[RNNT_Speech_Recognition.ipynb](RNNT_Speech_Recognition.ipynb)' 참고
+* [RNNT_Pretrained.ipynb](RNNT_Pretrained.ipynb)
+  * 현재 학습이 nan문제나 잘못된 문자열 패턴으로 수렴되는 문제 때문에 우선적으로 Pretrain된 네트워크를 구현하였음
+* [RNNT_KoSpeech.ipynb](RNNT_KoSpeech.ipynb)
+  * kospeech 라이브러리의 rnn-t를 이용해 학습을 시도함
+    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함
+* [RNNT_Speech_Recognition_KOR.ipynb](RNNT_Speech_Recognition_KOR.ipynb)
+  * torchaudio의 함수를 이용해 구현한 rnn-t로 학습을 시도함
+    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함
 ----
 
 ### 주요 할일
@@ -21,7 +28,7 @@
 ---
 
 1. 논문(Paper)
-     * [CTC(Connectionist Temporal Classification)](https://www.cs.toronto.edu/~graves/icml_2006.pdf])
+     * [CTC(Connectionist Temporal Classification)](https://www.cs.toronto.edu/~graves/icml_2006.pdf)
      * [Beam Search Decoding](https://aclanthology.org/W17-3207.pdf)
      * [RNN-T](https://arxiv.org/pdf/1211.3711.pdf)
 

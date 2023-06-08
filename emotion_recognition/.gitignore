@@ -1,2 +1,6 @@
 datasets/
 .ipynb_checkpoints
+result
+*.pth
+*.json
+test/

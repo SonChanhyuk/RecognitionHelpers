@@ -7,12 +7,13 @@
 #### 최신 작업 현황(lastest working)
 * [RNNT_Pretrained.ipynb](RNNT_Pretrained.ipynb)
   * 현재 학습이 nan문제나 잘못된 문자열 패턴으로 수렴되는 문제 때문에 우선적으로 Pretrain된 네트워크를 구현하였음
+  * 현재 라이브러리 관련 내용은 https://huggingface.co/eesungkim/stt_kr_conformer_transducer_large 참조
 * [RNNT_KoSpeech.ipynb](RNNT_KoSpeech.ipynb)
   * kospeech 라이브러리의 rnn-t를 이용해 학습을 시도함
-    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함
+    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함(학습데이터셋 라벨링 문제로 수정할 예정)
 * [RNNT_Speech_Recognition_KOR.ipynb](RNNT_Speech_Recognition_KOR.ipynb)
   * torchaudio의 함수를 이용해 구현한 rnn-t로 학습을 시도함
-    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함
+    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함(학습데이터셋 라벨링 문제로 수정할 예정)
 ----
 
 ### 주요 할일
@@ -37,6 +38,8 @@
      * [Beam Search Decoding](https://amber-chaeeunk.tistory.com/94)
      * [Beam Search for Rnn-t ASR](https://www.youtube.com/watch?v=Siuqi7e9IwU)
      * [Greedy Decoding for RNN-T ASR](https://www.youtube.com/watch?v=dgsDIuJLoJU)
+     * [Nvidia NeMo Toolkit](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/stable/)
+     * [Nvidia NeMo Github](https://github.com/NVIDIA/NeMo/blob/main/nemo/collections/asr/models/rnnt_models.py)
 
 # 평가 기법
 

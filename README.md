@@ -8,12 +8,13 @@
 * [RNNT_Pretrained.ipynb](RNNT_Pretrained.ipynb)
   * 현재 학습이 nan문제나 잘못된 문자열 패턴으로 수렴되는 문제 때문에 우선적으로 Pretrain된 네트워크를 구현하였음
   * 현재 라이브러리 관련 내용은 https://huggingface.co/eesungkim/stt_kr_conformer_transducer_large 참조
+  * 추가 설명은 [NvidiaNemoPretrained.md](NvidiaNemoPretrained.md) 참조
 * [RNNT_KoSpeech.ipynb](RNNT_KoSpeech.ipynb)
   * kospeech 라이브러리의 rnn-t를 이용해 학습을 시도함
-    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함(학습데이터셋 라벨링 문제로 수정할 예정)
+    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함(학습데이터셋 라벨링 문제로 수정중)
 * [RNNT_Speech_Recognition_KOR.ipynb](RNNT_Speech_Recognition_KOR.ipynb)
   * torchaudio의 함수를 이용해 구현한 rnn-t로 학습을 시도함
-    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함(학습데이터셋 라벨링 문제로 수정할 예정)
+    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함(학습데이터셋 라벨링 문제로 수정중)
 ----
 
 ### 주요 할일

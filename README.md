@@ -14,7 +14,8 @@
     * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함(학습데이터셋 라벨링 문제로 수정중)
 * [RNNT_Speech_Recognition_KOR.ipynb](RNNT_Speech_Recognition_KOR.ipynb)
   * torchaudio의 함수를 이용해 구현한 rnn-t로 학습을 시도함
-    * 한국어 데이터셋으로 학습시키면 역시 로스에서 nan문제가 발생함(학습데이터셋 라벨링 문제로 수정중)
+    * 오류를 개선 시키긴 했는데 Decoding알고리즘으로 Inference시 거의 같은 결과를 출력하는 문제를 해결해야함
+    
 ----
 
 ### 주요 할일

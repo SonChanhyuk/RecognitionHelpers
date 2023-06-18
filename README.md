@@ -43,6 +43,24 @@ The parameters that can be modified during the training process are as follows:
 - Preprocessing to normalize the decibel level of the input voice data is needed (tried using librosa's normalize function to achieve this, but it was ineffective)
 ---
 
+## Model Performance
+WER (Word Error Rate): The proportion of word errors between recognized words and the actual, correct words.
+![wer](./image/wer.png)
+CER (Character Error Rate): The proportion of character errors between recognized strings of text and the actual, correct strings.
+![cer](./image/cer.png)
+![acc](./image/acc.png)
+![f1](./image/f1.png)
+
+|     | 음성인식 |
+|-----|---------|
+| WER | 22.73%  |
+| SER | 7.38%   |
+
+|     | 감정인식 |
+|-----|---------|
+| acc | 81.25%  |
+| f1  | 0.8148  |
+
 ## **Demo User Guide**
 ### Installation (Windows)
 Install PyTorch

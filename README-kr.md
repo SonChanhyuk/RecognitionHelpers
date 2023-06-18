@@ -38,11 +38,29 @@
 - CNN모델의 경우 resnet18, resnet50, googlenet을 사용해보았지만 다른 CNN 모델을 사용하셔도 됩니다.
 ![emotion_model](./image/emotion_model_image.png)
 
-
 ### 문제점
 - dB이 커질수록 예측 결과가 happy, angry로 귀결됨
 - 입력 음성데이터의 db을 일반화하는 전처리과정이 필요함 (이러한 효과를 노리고 librosa의 normalize를 사용했으나 효과가 없었음)
 ---
+
+## 모델 성능
+WER (Word Error Rate) : 인식된 단어들과 정답 단어들 사이의 단어 오류 비율
+![wer](./image/wer.png)
+CER (text Character Error Rate) : 인식된 문자열과 실제 문자열사이의 문자 오류 비율
+![cer](./image/cer.png)
+![acc](./image/acc.png)
+![f1](./image/f1.png)
+
+|     | 음성인식 |
+|-----|---------|
+| WER | 22.73%  |
+| SER | 7.38%   |
+
+|     | 감정인식 |
+|-----|---------|
+| acc | 81.25%  |
+| f1  | 0.8148  |
+
 
 ## **demo 사용방법**
 ### 설치(windows)

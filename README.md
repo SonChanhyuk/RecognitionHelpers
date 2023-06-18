@@ -26,6 +26,18 @@ A service that aids the hearing impaired - it initiates speech recognition at th
 5. Added librosa.effects.normalize, ZCR, RMS in the preprocessing step of the model
 6. Changed the model to an LSTM-based model - maximum accuracy was over 80% on test and validation datasets, but very poor results for Korean data
 
+### Model
+Detailed learning processes can be found in the speech-emotion-recognition.ipynb and resnet_newdataset.ipynb files in the ./emotion_recognition directory.
+If you actually want to conduct the training, please refer to the train.ipynb in the ./emotion_recognition folder.
+The parameters that can be modified during the training process are as follows:
+- By changing the top_db of preprocess_audio, you can set the volume of the sound that is recognized as noise before and after the audio.
+- By changing the values of preprocess_audio, you can determine the length of the audio data to read. The current default value is 180,000.
+- Even if you change the composition of X in the preprocessing code (using a different feature), the code can still be used in the same way.
+- In EmotionLSTM(X.shape[1:3],hidden,n_class), the number of hidden layers of LSTM can be changed through 'hidden'.
+- If you are using a dataset with a number of labels different from 6, please modify n_class.
+- In the case of the CNN model, we tried using resnet18, resnet50, and googlenet, but you can also use other CNN models.
+![emotion_model](./image/emotion_model_image.png)
+
 ### Challenges
 - As the dB grows, prediction results are biased towards 'happy' and 'angry'
 - Preprocessing to normalize the decibel level of the input voice data is needed (tried using librosa's normalize function to achieve this, but it was ineffective)
@@ -54,7 +66,7 @@ Run the app - After all loading is complete, you can access 127.0.0.1:5000. ___P
 ~~~
 python app.py
 ~~~
-![result](./run_result.jpg)
+![result](./image/run_result.jpg)
 
 ---
 ## Directory Structure

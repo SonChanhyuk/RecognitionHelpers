@@ -26,6 +26,19 @@
 5. 모델 전처리 과정에 librosa.effects.normalize, ZCR, RMS추가
 6. 모델을 LSTM기반 모델로 변경 -> 정확도 test, validation dataset에서 최대 80% 이상, 그러나 한국어 데이터에 대해서는 매우 안좋은 결과가 나옴
 
+### 모델
+구체적인 학습과정은 ./emotion_recognition 폴더의 speech-emotion-recognition.ipynb,resnet_newdataset.ipynb 에서 확인 가능합니다.
+실제로 학습을 해보고 싶다면 ./emotion_recognition 폴더의 train.ipynb을 참고해주세요.
+학습시 변경 가능한 파라미터는 다음과 같습니다.
+- preprocess_audio의 top_db를 바꾸면 오디오 전후에서 노이즈로 인식하는 소리의 크기를 설정할 수 있습니다.
+- preprocess_audio의 수치를 바꾸어 읽을 오디오 데이터의 길이를 정할 수 있습니다. 현재 기본값은 180000입니다.
+- 전처리 코드에서 X의 구성을 바꾸어도(다른 feature를 사용하여도) 동일하게 코드가 사용가능합니다.
+- EmotionLSTM(X.shape[1:3],hidden,n_class)에서 hidden을 통해 LSTM의 히든레이어 수가 변경됩니다.
+- 만약 label의 개수가 6개가 아닌 다른 데이터 셋을 사용한다면 n_class를 수정해주시면 됩니다.
+- CNN모델의 경우 resnet18, resnet50, googlenet을 사용해보았지만 다른 CNN 모델을 사용하셔도 됩니다.
+![emotion_model](./image/emotion_model_image.png)
+
+
 ### 문제점
 - dB이 커질수록 예측 결과가 happy, angry로 귀결됨
 - 입력 음성데이터의 db을 일반화하는 전처리과정이 필요함 (이러한 효과를 노리고 librosa의 normalize를 사용했으나 효과가 없었음)
@@ -54,7 +67,7 @@ pip install pyaudio
 ~~~
 python app.py
 ~~~
-![result](./run_result.jpg)
+![result](./image/run_result.jpg)
 
 ---
 ## 디렉토리 구성

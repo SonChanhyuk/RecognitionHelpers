@@ -1,12 +1,66 @@
-# RecognitionHelpers
+[![en](https://img.shields.io/badge/lang-en-red.svg)](./README.md)
+[![kr](https://img.shields.io/badge/lang-kr-yellow.svg)](./README-kr.md)
 
-## speech emotion recognition
+# **RecognitionHelpers**
 
-### 진행상황
-1. CNN모델 성능이 안좋음
-2. wav2vec pretrained된 모델사용 해봤으나 추가 학습이 어려웠음
-3. MFCC추출하여 image로 취급하고 resnet, googlenet으로 학습 : 정확도 50%가 최대
-4. 데이터셋을 변경하여 학습 : 정확도 80%가 최대
+## **Implementation Goal**
+A service that aids the hearing impaired - it initiates speech recognition at the push of a button, displaying the results of the speech recognition and the speaker's predicted emotional state.
 
 ---
-### 현재 사용 모델 : speech-emotion-recognition.ipynb
+## **Speech Recognition**
+- To be added
+---
+## **Emotion Recognition**
+### Datasets used
+- Dialog audio dataset for emotion classification (Korean) - https://aihub.or.kr/aihubdata/data/view.do?currMenu=&topMenu=&dataSetSn=263&aihubDataSe=extrldata
+- RAVDESS - https://www.kaggle.com/datasets/uwrfkaggler/ravdess-emotional-speech-audio
+- TESS - https://www.kaggle.com/datasets/ejlok1/toronto-emotional-speech-set-tess
+- CREMA-D - https://www.kaggle.com/datasets/ejlok1/cremad
+- SAVEE - https://www.kaggle.com/datasets/ejlok1/surrey-audiovisual-expressed-emotion-savee
+  
+### Development process
+1. Extracted Mel-spectrogram from Korean audio dataset and trained with a basic CNN - results were poor
+2. Switched model to a wav2vec pre-trained model - additional training was difficult and the model was quite heavy
+3. Created a 3x224x224 image by extracting MFCC, trained with resnet and googlenet - maximum accuracy was 50%
+4. Changed the dataset to an English dataset for training - maximum accuracy was 80%
+5. Added librosa.effects.normalize, ZCR, RMS in the preprocessing step of the model
+6. Changed the model to an LSTM-based model - maximum accuracy was over 80% on test and validation datasets, but very poor results for Korean data
+
+### Challenges
+- As the dB grows, prediction results are biased towards 'happy' and 'angry'
+- Preprocessing to normalize the decibel level of the input voice data is needed (tried using librosa's normalize function to achieve this, but it was ineffective)
+---
+
+## **Demo User Guide**
+### Installation (Windows)
+Install PyTorch
+~~~
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+~~~
+Install Nvidia's NeMo toolkit for speech recognition
+The NeMo toolkit requires the installation of the Visual C++ Builds Tool on Windows. If you don't have it, it won't install properly.
+Even with the C++ builds tool, pynini may not install correctly, so you need to install it separately as follows.
+~~~
+conda install -c conda-forge pynini
+pip install Cython
+pip install "nemo_toolkit[all]"
+~~~
+Install libraries for running the demo app
+~~~
+pip install SpeechRecognition
+pip install pyaudio
+~~~
+Run the app - After all loading is complete, you can access 127.0.0.1:5000. ___Please note that on the first access, voice recognition will start even though the screen is not displayed.___
+~~~
+python app.py
+~~~
+![result](./run_result.jpg)
+
+---
+## Directory Structure
+- emotion_recognition: This folder is for practice and learning of emotion recognition.
+- model_state_dict: This contains the parameters of the trained models.
+- templates : These are HTML files to be displayed in the demo app.
+- utils : This contains the functions to be used in emotion_model.py.
+- app.py : This is the file to run the demo app.
+- emotion_model.py : This file contains the emotion recognition model.

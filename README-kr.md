@@ -45,7 +45,7 @@
 
 ## 모델 성능
 WER (Word Error Rate) : 인식된 단어들과 정답 단어들 사이의 단어 오류 비율
-![wer](./image/wer.png)
+![wer](./image/wer.png)  
 CER (text Character Error Rate) : 인식된 문자열과 실제 문자열사이의 문자 오류 비율
 ![cer](./image/cer.png)
 ![acc](./image/acc.png)

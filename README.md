@@ -45,9 +45,9 @@ The parameters that can be modified during the training process are as follows:
 
 ## Model Performance
 WER (Word Error Rate): The proportion of word errors between recognized words and the actual, correct words.
-![wer](./image/wer.png)
+![wer](./image/wer.png)  
 CER (Character Error Rate): The proportion of character errors between recognized strings of text and the actual, correct strings.
-![cer](./image/cer.png)
+![cer](./image/cer.png)  
 ![acc](./image/acc.png)
 ![f1](./image/f1.png)
 

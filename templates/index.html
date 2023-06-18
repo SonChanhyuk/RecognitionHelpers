@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgba(43,174,102);
+        }
+
+        div {
+            color:rgba(252,246,245);
+        }
+
+        #speechContainer {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Speech Recognition in Python</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
+</head>
+<body>
+<div id="speechContainer">
+    <h1>Recognition Helpers+</h1>
+    <button id="recButton" onclick="startRecording();">녹음 시작</button>
+
+    <div id="loading" style="display: none;">
+        <h2>음성 인식중...</h2>
+    </div>
+
+    <div id="transcriptContainer" style="display: none;">
+        <h1>Recognition Result</h1>
+        <div id="resultContainer">
+            <p id="speechText">{{ transcript }}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function startRecording() {
+        document.getElementById('recButton').style.display = 'none';
+        document.getElementById('loading').style.display = 'block';
+        document.getElementById('resultContainer').style.display = 'none';
+        location.reload();
+    }
+    {% if transcript != "" %}
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('transcriptContainer').style.display = 'block';
+        document.getElementById('resultContainer').style.display = 'block';
+    {% else %}
+        document.getElementById('loading').style.display = 'block';
+    {% endif %}
+</script>
+
+</body>
+</html>

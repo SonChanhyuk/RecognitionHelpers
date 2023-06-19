@@ -24,7 +24,9 @@ And then concatenate results between speech recognition result and emotion recog
 
 
 ## Model
-* We decided to use rnn transducer structure to real-time speech recognition  
+* We tried to train [Emformer-RNN-T](https://pytorch.org/audio/stable/_modules/torchaudio/models/rnnt.html#emformer_rnnt_base) in torchaudio lib, but there are inference problem that results are always converaged to biasedly wrong only one or some pattern sequence(we think that it's from less training, less number of hidden features for korean)
+* These progress can be seen from [here](speech_recognition/RNNT_Emformer_KOR.ipynb)
+* So,We decided to use rnn transducer structure to real-time speech recognition,because Emformer RNN-T is needed more training.
 
 | RNN-T Base     | RNN-T Encoder  |
 | -------------- | -------------- |

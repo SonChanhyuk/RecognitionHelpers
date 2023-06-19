@@ -8,7 +8,28 @@ A service that aids the hearing impaired - it initiates speech recognition at th
 
 ---
 ## **Speech Recognition**
-- To be added
+### Datasets used
+- When training Emformer RNN-T network, we use '[자유대화 음성(일반남여)](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=109)' dataset in AIHub
+
+### Inference Process
+1. We call the 'transcribe' function, which is already implemented in the NeMo Toolkit library.
+2. The transcribe function takes as its argument a list object that contains strings of audio file path names.
+3. In the transcribe function, each file name is accessed in order and each audio file is loaded and then converted into features such as MFCC.
+4. These MFCC features are then input into the encoder part of the RNN-Transducer, from which we obtain vectors for certain time step segments.
+5. We then employ a greedy decoding algorithm, akin to Next Token Prediction, which infers each token one by one using these vectors, along with the initial RNN token and blank token, and predicts the token of the next audio feature.
+6. After extracting the token values for each time step, these values are collected into a single vector. This vector is then back-translated into words or characters using the SentencePiece library, which has been trained on a type of word embedding, through a concatenate operation.
+7. Finally, the function returns the most likely sentence candidate along with various other sentence inference candidates.
+And then concatenate results between speech recognition result and emotion recognition result.
+![Process](https://i.imgur.com/XXPvkk0.png)
+
+
+## Model
+* We decided to use rnn transducer structure to real-time speech recognition  
+
+| RNN-T Base     | RNN-T Encoder  |
+| -------------- | -------------- |
+| <img src="https://i.imgur.com/45quMCC.png" style="display:inline;" width="300em" height="auto">| ![Process](https://velog.velcdn.com/images/sjj995/post/640e4929-603f-4b67-b677-cc703cd2aad5/image.png)   |
+
 ---
 ## **Emotion Recognition**
 ### Datasets used
@@ -44,15 +65,17 @@ The parameters that can be modified during the training process are as follows:
 ---
 
 ## Model Performance
-WER (Word Error Rate): The proportion of word errors between recognized words and the actual, correct words.  
-CER (Character Error Rate): The proportion of character errors between recognized strings of text and the actual, correct strings.  
-Accuracy  
-F1-score
+WER (Word Error Rate): The proportion of word errors between recognized words and the actual, correct words.
+![wer](./image/wer.png)  
+CER (Character Error Rate): The proportion of character errors between recognized strings of text and the actual, correct strings.
+![cer](./image/cer.png)  
+![acc](./image/acc.png)
+![f1](./image/f1.png)
 
 |     | 음성인식 |
 |-----|---------|
 | WER | 22.73%  |
-| SER | 7.38%   |
+| CER | 7.38%   |
 
 |     | 감정인식 |
 |-----|---------|
@@ -93,9 +116,8 @@ python app.py
 - app.py : This is the file to run the demo app.
 - emotion_model.py : This file contains the emotion recognition model.
 
-## Contact
-Son, Chanhyuk - thscksgur0903@gmail.com  
-Hwang, Se Hyeon - imscs21@naver.com  
-Son, Yunseok - suryblue@naver.com  
-Jungmann, Matthew - wmjungmann@gmail.com  
-Sun, Yuekun - maoruoxi520@gmail.com  
+
+----
+## references
+* Conformer Image: https://velog.io/@sjj995/Conformer-%EB%AA%A8%EB%8D%B8-%EB%A6%AC%EB%B7%B0   &  https://arxiv.org/pdf/2005.08100.pdf 
+* rnn-transducer Image: https://ratsgo.github.io/speechbook/docs/neuralam ([CC3.0 by nc-sa](https://creativecommons.org/licenses/by-nc-sa/3.0/))  &  https://arxiv.org/pdf/1303.5778.pdf

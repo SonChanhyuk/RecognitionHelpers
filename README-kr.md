@@ -8,7 +8,29 @@
 
 ---
 ## **음성인식**
-- 추가예정
+### Datasets used
+- Emformer RNN-T 네트워크를 학습시키기 위해, AIHub의 [자유대화 음성(일반남여)](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=109)' 데이터셋을 사용했습니다.
+
+### Inference Process
+1. 이미 NeMo Toolkit 라이브러리에서 구현된 'transcribe' 함수를 호출합니다.
+2. transcribe 함수는 오디오 파일 경로 이름 문자열을 포함하는 리스트 객체를 인자로 받습니다.
+3. transcribe 함수 내에서는 각 파일 이름이 순서대로 접근되고 각 오디오 파일이 로드된 다음 MFCC와 같은 특성으로 변환됩니다.
+4. 이러한 MFCC 특성들은 RNN-Transducer의 인코더 부분으로 입력되어 특정 시간 단계 세그먼트에 대한 벡터를 얻습니다.
+5. 이 벡터들과 초기 RNN 토큰, 빈 토큰을 이용하여 각 토큰을 하나씩 추론하는 탐욕적 디코딩 알고리즘, 즉 Next Token Prediction을 수행하며 다음 오디오 특성의 토큰을 예측합니다.
+6. 각 시간 단계에 대한 토큰 값을 추출한 후, 이 값들은 하나의 벡터로 모아집니다. 이 벡터는 단어 임베딩 유형에 대해 학습된 SentencePiece 라이브러리를 사용하여 단어나 문자로 다시 변환됩니다. 이 과정은 연결(concatenate) 연산을 통해 이루어집니다.
+7. 마지막으로, 함수는 가장 가능성이 높은 문장 후보와 다양한 다른 문장 추론 후보를 반환합니다.
+그리고 이후에 음성 인식 결과와 감정 인식 결과를 연결합니다.
+![Process](https://i.imgur.com/XXPvkk0.png)
+
+
+## Model
+* 우리는 torchaudio 라이브러리의 [Emformer-RNN-T](https://pytorch.org/audio/stable/_modules/torchaudio/models/rnnt.html#emformer_rnnt_base)를 학습시키려 했지만, 결과가 항상 편향적으로 잘못된 하나 또는 몇 가지 패턴의 시퀀스로 수렴하는 추론 문제가 있었습니다(우리는 이것이 한국어에 대한 충분하지 않은 훈련, 충분하지 않은 은닉 특징의 수 때문이라고 생각합니다).
+* 이러한 진행 상황은 [여기](speech_recognition/RNNT_Emformer_KOR.ipynb)에서 볼 수 있습니다. 
+* 그래서 우리는 Emformer RNN-T가 더 많은 훈련이 필요하다고 판단하여 실시간 음성 인식을 위해 RNN transducer 구조를 사용하기로 결정하였습니다.
+
+| RNN-T Base     | RNN-T Encoder  |
+| -------------- | -------------- |
+| <img src="https://i.imgur.com/45quMCC.png" style="display:inline;" width="300em" height="auto">| ![Process](https://velog.velcdn.com/images/sjj995/post/640e4929-603f-4b67-b677-cc703cd2aad5/image.png)   |
 ---
 ## **감정인식**
 ### 사용된 dataset
@@ -87,6 +109,7 @@ python app.py
 
 ---
 ## 디렉토리 구성
+- speech_recognition : 음성인식 연습 및 학습용 폴더입니다.
 - emotion_recognition : 감정인식 연습 및 학습용 폴더입니다.
 - model_state_dict : 학습된 모델 파라미터입니다.
 - templates : demo app에서 보여줄 HTML파일입니다.

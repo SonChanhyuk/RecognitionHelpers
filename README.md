@@ -44,12 +44,10 @@ The parameters that can be modified during the training process are as follows:
 ---
 
 ## Model Performance
-WER (Word Error Rate): The proportion of word errors between recognized words and the actual, correct words.
-![wer](./image/wer.png)  
-CER (Character Error Rate): The proportion of character errors between recognized strings of text and the actual, correct strings.
-![cer](./image/cer.png)  
-![acc](./image/acc.png)
-![f1](./image/f1.png)
+WER (Word Error Rate): The proportion of word errors between recognized words and the actual, correct words.  
+CER (Character Error Rate): The proportion of character errors between recognized strings of text and the actual, correct strings.  
+Accuracy  
+F1-score
 
 |     | 음성인식 |
 |-----|---------|
@@ -94,3 +92,10 @@ python app.py
 - utils : This contains the functions to be used in emotion_model.py.
 - app.py : This is the file to run the demo app.
 - emotion_model.py : This file contains the emotion recognition model.
+
+## Contact
+Son, Chanhyuk - thscksgur0903@gmail.com  
+Hwang, Se Hyeon - imscs21@naver.com  
+Son, Yunseok - suryblue@naver.com  
+Jungmann, Matthew - wmjungmann@gmail.com  
+Sun, Yuekun - maoruoxi520@gmail.com  

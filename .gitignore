@@ -1,0 +1,9 @@
+datasets/
+.ipynb_checkpoints
+result/
+*.json
+test/
+soxan/
+Untitled.ipynb
+input.wav
+__pycache__/

@@ -44,12 +44,10 @@
 ---
 
 ## 모델 성능
-WER (Word Error Rate) : 인식된 단어들과 정답 단어들 사이의 단어 오류 비율
-![wer](./image/wer.png)  
-CER (text Character Error Rate) : 인식된 문자열과 실제 문자열사이의 문자 오류 비율
-![cer](./image/cer.png)
-![acc](./image/acc.png)
-![f1](./image/f1.png)
+WER (Word Error Rate) : 인식된 단어들과 정답 단어들 사이의 단어 오류 비율  
+CER (text Character Error Rate) : 인식된 문자열과 실제 문자열사이의 문자 오류 비율  
+Accuracy  
+F1-score
 
 |     | 음성인식 |
 |-----|---------|
@@ -95,3 +93,10 @@ python app.py
 - utils : emotion_model.py에서 사용할 함수들이 저장되어 있습니다.
 - app.py : 데모앱 실행 파일입니다.
 - emotion_model.py : 감정인식 모델이 저장되어 있습니다.
+
+## 연락처
+손찬혁 - thscksgur0903@gmail.com  
+황세현 - imscs21@naver.com  
+손윤석 - suryblue@naver.com  
+Jungmann, Matthew - wmjungmann@gmail.com  
+Sun, Yuekun - maoruoxi520@gmail.com  
